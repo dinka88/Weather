@@ -3,4 +3,13 @@
     <string name="weather">Weather!</string>
     <string name="moscow">Moscow</string>
     <string name="search">Search</string>
+    <string name="saint_petersburg">Saint Petersburg</string>
+    <string name="nizhny_novgorod">Nizhny Novgorod</string>
+    <string name="enter_the_name_of_the_city">Enter the name of the city</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="uv_index">UV index</string>
+    <string name="city">City</string>
+    <string name="_10_m_s">10 m/s</string>
+    <string name="_40">40%</string>
 </resources>
