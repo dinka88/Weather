@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="weather">Погода!</string>
+    <string name="moscow">Москва</string>
+    <string name="search">Поиск</string>
+</resources>
