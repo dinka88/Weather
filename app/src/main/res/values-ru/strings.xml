@@ -4,4 +4,11 @@
     <string name="weather">Погода!</string>
     <string name="moscow">Москва</string>
     <string name="search">Поиск</string>
+    <string name="saint_petersburg">Cанкт-Петербург</string>
+    <string name="nizhny_novgorod">Нижний Новгород</string>
+    <string name="enter_the_name_of_the_city">Введите название города</string>
+    <string name="humidity">Влажность</string>
+    <string name="wind_speed">Скорость ветра</string>
+    <string name="uv_index">Индекс УФ</string>
+    <string name="city">Город</string>
 </resources>
