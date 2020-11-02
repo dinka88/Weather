@@ -11,4 +11,7 @@
     <string name="wind_speed">Скорость ветра</string>
     <string name="uv_index">Индекс УФ</string>
     <string name="city">Город</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="notification">Уведомление</string>
+    <string name="unit">Единица</string>
 </resources>

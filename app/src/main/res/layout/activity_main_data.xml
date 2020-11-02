@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDECE9"
-    tools:context=".MainActivity">
+    android:background="@color/theme"
+    tools:context=".ActivityData">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -15,6 +15,17 @@
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@id/textView3"
         app:srcCompat="@drawable/hiclipart" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/theme"
+        android:src="@drawable/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -30,23 +41,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/text_color"/>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+5...+8"
+        android:text="+"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@id/textView3" />
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        android:textColor="@color/text_color"/>
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wind_speed"
+        android:textColor="@color/text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView4"
         app:layout_constraintEnd_toStartOf="@id/textView3"/>
@@ -56,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_10_m_s"
+        android:textColor="@color/text_color"
         app:layout_constraintTop_toBottomOf="@id/textView8"
         app:layout_constraintStart_toStartOf="@id/textView8"/>
 
@@ -64,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:textColor="@color/text_color"
         android:text="@string/humidity"
         app:layout_constraintBottom_toBottomOf="@id/textView8"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
@@ -75,6 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_40"
+        android:textColor="@color/text_color"
         app:layout_constraintTop_toBottomOf="@id/textView9"
         app:layout_constraintStart_toStartOf="@id/textView9"/>
 
@@ -83,6 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:textColor="@color/text_color"
         android:text="@string/uv_index"
         app:layout_constraintBottom_toBottomOf="@id/textView9"
         app:layout_constraintStart_toEndOf="@id/textView9" />
@@ -92,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5 of 10"
+        android:textColor="@color/text_color"
         app:layout_constraintTop_toBottomOf="@id/textView10"
         app:layout_constraintStart_toStartOf="@id/textView10"/>
 
