@@ -5,27 +5,43 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivitySearch extends AppCompatActivity {
     private static final String TAG ="MyLog";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        final EditText city = findViewById(R.id.editText2);
+
         Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Info.getInstance().setDegrees((int) (Math.random()*30));
-                startActivity(new Intent(MainActivitySearch.this, ActivityData.class));
+                showInfo(city);
+            }
+        });
+        city.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction()==KeyEvent.ACTION_DOWN && (keyCode== KeyEvent.KEYCODE_ENTER ))
+                {
+                    showInfo(city);
+                    return true;
+                }
 
 
+                return false;
             }
         });
         ImageButton buttonSetting = findViewById(R.id.imageButton6);
@@ -38,6 +54,14 @@ public class MainActivitySearch extends AppCompatActivity {
         });
         Toast.makeText(getApplicationContext(), "onCreate",Toast.LENGTH_SHORT).show();
         Log.d(TAG,"onCreate");
+    }
+
+    private void showInfo(EditText city) {
+        final String nameCity = city.getText().toString();
+        Info.getInstance().setDegrees((int) (Math.random()*30));
+        Intent intent = new Intent(MainActivitySearch.this, ActivityData.class);
+        intent.putExtra("cityName",nameCity);
+        startActivity(intent);
     }
 
     @Override
