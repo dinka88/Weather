@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivitySearch extends AppCompatActivity {
     private static final String TAG ="MyLog";
+    private boolean isLandscape;
 
 
     @Override
@@ -23,6 +24,9 @@ public class MainActivitySearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         final EditText city = findViewById(R.id.editText2);
+
+        this.isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+
 
         Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
@@ -34,12 +38,10 @@ public class MainActivitySearch extends AppCompatActivity {
         city.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction()==KeyEvent.ACTION_DOWN && (keyCode== KeyEvent.KEYCODE_ENTER ))
-                {
+                if (event.getAction()==KeyEvent.ACTION_DOWN && (keyCode== KeyEvent.KEYCODE_ENTER )) {
                     showInfo(city);
                     return true;
                 }
-
 
                 return false;
             }
@@ -57,11 +59,23 @@ public class MainActivitySearch extends AppCompatActivity {
     }
 
     private void showInfo(EditText city) {
-        final String nameCity = city.getText().toString();
-        Info.getInstance().setDegrees((int) (Math.random()*30));
-        Intent intent = new Intent(MainActivitySearch.this, ActivityData.class);
-        intent.putExtra("cityName",nameCity);
-        startActivity(intent);
+            Log.i(TAG, isLandscape +" is land");
+            if(isLandscape) {
+                DataFragment dataFragment = new DataFragment();
+//                dataFragment.setArguments(getIntent().getExtras());
+                Bundle bundle = new Bundle();
+                final String nameCity = city.getText().toString();
+                bundle.putString("cityName", nameCity);
+                dataFragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, dataFragment).commit();
+
+            } else {
+                final String nameCity = city.getText().toString();
+                Info.getInstance().setDegrees((int) (Math.random()*30));
+                Intent intent = new Intent(MainActivitySearch.this, ActivityData.class);
+                intent.putExtra("cityName", nameCity);
+                startActivity(intent);
+            }
     }
 
     @Override
