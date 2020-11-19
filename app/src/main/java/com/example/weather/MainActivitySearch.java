@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivitySearch extends AppCompatActivity {
     private static final String TAG ="MyLog";
+    private static final String CITYNAME ="cityName";
     private boolean isLandscape;
 
 
@@ -62,10 +63,9 @@ public class MainActivitySearch extends AppCompatActivity {
             Log.i(TAG, isLandscape +" is land");
             if(isLandscape) {
                 DataFragment dataFragment = new DataFragment();
-//                dataFragment.setArguments(getIntent().getExtras());
                 Bundle bundle = new Bundle();
                 final String nameCity = city.getText().toString();
-                bundle.putString("cityName", nameCity);
+                bundle.putString(CITYNAME, nameCity);
                 dataFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, dataFragment).commit();
 
@@ -73,7 +73,7 @@ public class MainActivitySearch extends AppCompatActivity {
                 final String nameCity = city.getText().toString();
                 Info.getInstance().setDegrees((int) (Math.random()*30));
                 Intent intent = new Intent(MainActivitySearch.this, ActivityData.class);
-                intent.putExtra("cityName", nameCity);
+                intent.putExtra(CITYNAME, nameCity);
                 startActivity(intent);
             }
     }

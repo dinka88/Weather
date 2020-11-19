@@ -7,6 +7,7 @@
     android:background="@color/theme"
     tools:context=".ActivityData">
 
+
     <FrameLayout
         android:id="@+id/fragmentData"
         android:layout_width="match_parent"
@@ -22,5 +23,14 @@
         android:src="@drawable/settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

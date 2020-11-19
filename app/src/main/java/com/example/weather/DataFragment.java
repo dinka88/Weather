@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class DataFragment extends Fragment {
+    private static final String WEB= "https://en.wikipedia.org/wiki/";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class DataFragment extends Fragment {
             buttonInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String urlCity = "https://en.wikipedia.org/wiki/" + cityName;
+                    String urlCity = WEB + cityName;
                     Uri uriCity = Uri.parse(urlCity);
                     Intent infoCity = new Intent(Intent.ACTION_VIEW, uriCity);
                     startActivity(infoCity);
