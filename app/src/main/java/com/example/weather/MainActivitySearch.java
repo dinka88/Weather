@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
+
 public class MainActivitySearch extends AppCompatActivity {
     private static final String TAG ="MyLog";
     private static final String CITYNAME ="cityName";
@@ -24,7 +27,8 @@ public class MainActivitySearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        final EditText city = findViewById(R.id.editText2);
+        final TextInputLayout cityLayout = findViewById(R.id.textInputLayout);
+        final EditText city = cityLayout.getEditText();
 
         this.isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
 
@@ -33,6 +37,8 @@ public class MainActivitySearch extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Snackbar snackInfo = Snackbar.make(v, "Идет поиск", Snackbar.LENGTH_LONG);
+                snackInfo.show();
                 showInfo(city);
             }
         });
