@@ -9,7 +9,7 @@
     <string name="enter_the_name_of_the_city">Введите название города</string>
     <string name="humidity">Влажность</string>
     <string name="wind_speed">Скорость ветра</string>
-    <string name="uv_index">Индекс УФ</string>
+    <string name="pressure">Давление</string>
     <string name="city">Город</string>
     <string name="dark_theme">Темная тема</string>
     <string name="notification">Уведомление</string>

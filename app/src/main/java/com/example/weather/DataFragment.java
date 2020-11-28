@@ -3,6 +3,7 @@ package com.example.weather;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +28,29 @@ public class DataFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle arguments = getArguments();
         if(arguments != null) {
-            final String cityName = arguments.getString("cityName");
+            WeatherService.WeatherData weatherData = arguments.getParcelable(MainActivitySearch.WEATHER);
 
             TextView city = view.findViewById(R.id.textView3);
+            final String cityName = weatherData.getCity();
             city.setText(cityName);
+
+            TextView temp= view.findViewById(R.id.textView4);
+            final Integer tempInfo = weatherData.getTemp();
+            temp.setText(tempInfo.toString());
+
+            TextView speed= view.findViewById(R.id.textView5);
+            final Integer speedInfo = weatherData.getSpeed();
+            speed.setText(speedInfo.toString() + " m/s ");
+
+            TextView himidity= view.findViewById(R.id.textView6);
+            final Integer himidityInfo = weatherData.getHumidity();
+            himidity.setText(himidityInfo.toString() + " % ");
+
+            TextView pressure= view.findViewById(R.id.textView7);
+            final Integer pressureInfo = weatherData.getPressure();
+            pressure.setText(pressureInfo.toString());
+
+
 
             ImageButton buttonInfo = view.findViewById(R.id.imageButton);
             buttonInfo.setOnClickListener(new View.OnClickListener() {
