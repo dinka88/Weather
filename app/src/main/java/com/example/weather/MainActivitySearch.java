@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,9 +18,11 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.IOException;
+
 public class MainActivitySearch extends AppCompatActivity {
     private static final String TAG ="MyLog";
-    private static final String CITYNAME ="cityName";
+    public static final String WEATHER ="weather";
     private boolean isLandscape;
 
 
@@ -36,23 +39,34 @@ public class MainActivitySearch extends AppCompatActivity {
         Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 Snackbar snackInfo = Snackbar.make(v, "Идет поиск", Snackbar.LENGTH_LONG);
                 snackInfo.show();
-                showInfo(city);
-            }
-        });
-        city.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction()==KeyEvent.ACTION_DOWN && (keyCode== KeyEvent.KEYCODE_ENTER )) {
-                    showInfo(city);
-                    return true;
-                }
+                    final Handler handler = new Handler();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                final WeatherService.WeatherData weather = WeatherService.getWeather(city.getText().toString());
+                                Log.i("XXX", weather.toString());
 
-                return false;
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showInfo(weather);
+
+                                    }
+                                });
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                Snackbar errorInfo = Snackbar.make(v, "Город не найден", Snackbar.LENGTH_LONG);
+                                errorInfo.show();
+                            }
+                        }
+                    }).start();
             }
         });
+
         ImageButton buttonSetting = findViewById(R.id.imageButton6);
         buttonSetting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,21 +79,18 @@ public class MainActivitySearch extends AppCompatActivity {
         Log.d(TAG,"onCreate");
     }
 
-    private void showInfo(EditText city) {
+    private void showInfo(WeatherService.WeatherData weather) {
             Log.i(TAG, isLandscape +" is land");
             if(isLandscape) {
                 DataFragment dataFragment = new DataFragment();
                 Bundle bundle = new Bundle();
-                final String nameCity = city.getText().toString();
-                bundle.putString(CITYNAME, nameCity);
+                 bundle.putParcelable(WEATHER, weather);
                 dataFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, dataFragment).commit();
 
             } else {
-                final String nameCity = city.getText().toString();
-                Info.getInstance().setDegrees((int) (Math.random()*30));
                 Intent intent = new Intent(MainActivitySearch.this, ActivityData.class);
-                intent.putExtra(CITYNAME, nameCity);
+                intent.putExtra(WEATHER, weather);
                 startActivity(intent);
             }
     }
