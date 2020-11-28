@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city_info">
+        <item> 10.01.19;-10</item>
+        <item> 11.01.19; -9</item>
+        <item> 12.01.19; -12</item>
+    </string-array>
+</resources>
