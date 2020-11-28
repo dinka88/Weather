@@ -11,46 +11,40 @@
         android:id="@+id/imageButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/theme"
         android:src="@drawable/settings"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"  />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button2"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:background="@color/color_button"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/color_button"
         android:text="@string/search"
         android:textColor="@color/text_color"
-        app:layout_constraintBottom_toBottomOf="@id/editText2"
-        app:layout_constraintStart_toEndOf="@+id/editText2" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="257dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:hint="@string/enter_the_name_of_the_city"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/moscow"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/editText2"
-        app:layout_constraintTop_toBottomOf="@id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <TextView
         android:id="@+id/textView12"
@@ -59,20 +53,20 @@
         android:text="@string/saint_petersburg"
         android:textColor="@color/text_color"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/checkBox2"
         app:layout_constraintStart_toStartOf="@id/textView11"
-        app:layout_constraintTop_toBottomOf="@id/textView11"
-        app:layout_constraintBottom_toBottomOf="@id/checkBox2"/>
+        app:layout_constraintTop_toBottomOf="@id/textView11" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nizhny_novgorod"
-        android:textSize="20sp"
         android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/checkBox3"
         app:layout_constraintStart_toStartOf="@id/textView12"
-        app:layout_constraintTop_toBottomOf="@id/textView12"
-        app:layout_constraintBottom_toBottomOf="@id/checkBox3"/>
+        app:layout_constraintTop_toBottomOf="@id/textView12" />
 
 
     <CheckBox
@@ -84,6 +78,7 @@
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="@id/textView11"
         app:layout_constraintStart_toEndOf="@id/textView13" />
+
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
@@ -91,14 +86,33 @@
         android:text="@string/wind_speed"
         android:textColor="@color/text_color"
         app:layout_constraintStart_toStartOf="@id/checkBox"
-        app:layout_constraintTop_toBottomOf="@id/checkBox"/>
+        app:layout_constraintTop_toBottomOf="@id/checkBox" />
+
     <CheckBox
         android:id="@+id/checkBox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_color"
         android:text="@string/uv_index"
+        android:textColor="@color/text_color"
         app:layout_constraintStart_toStartOf="@id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@id/checkBox2"/>
+        app:layout_constraintTop_toBottomOf="@id/checkBox2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton6">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_button"
+            android:hint="@string/enter_the_name_of_the_city" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
